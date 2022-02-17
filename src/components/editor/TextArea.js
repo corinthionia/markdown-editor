@@ -1,20 +1,22 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
-import useInput from '../../hooks/useInput';
+
 import useSelect from '../../hooks/useSelect';
+import { ContentContext } from '../../contexts/ContentContext';
 
 const TextArea = () => {
-  const [inputText, setInputText, handleInputChange] = useInput('');
+  const { content, setContent, handleContentChange } =
+    useContext(ContentContext);
 
   const HandleClickBoldBtn = (e) =>
-    useSelect(e, inputText, setInputText, '**', '**');
+    useSelect(e, content, setContent, '**', '**');
 
   return (
     <Wrapper
       spellCheck="false"
       onClick={HandleClickBoldBtn}
-      onChange={handleInputChange}
-      value={inputText}
+      onChange={handleContentChange}
+      value={content}
     ></Wrapper>
   );
 };

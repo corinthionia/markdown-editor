@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import COLORS from '../../constants/COLORS';
+import useSelect from '../../hooks/useSelect';
 
 const Buttons = () => {
+  // const HandleClickBoldBtn = (e) =>
+  //   useSelect(e, content, setContent, '**', '**');
+
   return (
     <Wrapper>
       <Btn>B</Btn>
