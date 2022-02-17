@@ -2,15 +2,18 @@ import styled from 'styled-components';
 import Editor from './components/editor/Editor';
 import Viewer from './components/viewer/Viewer';
 import COLORS from './constants/COLORS';
+import ContentProvider from './contexts/ContentContext';
 
 function App() {
   return (
     <Wrapper>
       <Header>📝 corinthionia / markdown-editor</Header>
-      <Content>
-        <Editor />
-        <Viewer />
-      </Content>
+      <ContentProvider>
+        <Content>
+          <Editor />
+          <Viewer />
+        </Content>
+      </ContentProvider>
     </Wrapper>
   );
 }

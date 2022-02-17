@@ -1,7 +1,22 @@
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
+import useInput from '../../hooks/useInput';
+import useSelect from '../../hooks/useSelect';
 
 const TextArea = () => {
-  return <Wrapper spellCheck="false"></Wrapper>;
+  const [inputText, setInputText, handleInputChange] = useInput('');
+
+  const HandleClickBoldBtn = (e) =>
+    useSelect(e, inputText, setInputText, '**', '**');
+
+  return (
+    <Wrapper
+      spellCheck="false"
+      onClick={HandleClickBoldBtn}
+      onChange={handleInputChange}
+      value={inputText}
+    ></Wrapper>
+  );
 };
 
 const Wrapper = styled.textarea`
