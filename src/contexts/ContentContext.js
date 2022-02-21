@@ -1,5 +1,4 @@
-import { createContext } from 'react';
-import useInput from '../hooks/useInput';
+import { createContext, useCallback, useState } from 'react';
 
 export const ContentContext = createContext({
   state: { content: '' },
@@ -9,12 +8,12 @@ export const ContentContext = createContext({
 });
 
 const ContentProvider = ({ children }) => {
-  const [content, setContent, handleContentChange] = useInput('');
+  const [content, setContent] = useState('');
+
+  const setContentHandler = useCallback((content) => setContent(content), []);
 
   return (
-    <ContentContext.Provider
-      value={{ content, setContent, handleContentChange }}
-    >
+    <ContentContext.Provider value={{ content, setContentHandler }}>
       {children}
     </ContentContext.Provider>
   );

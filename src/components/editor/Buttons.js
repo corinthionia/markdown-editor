@@ -1,14 +1,29 @@
 import styled from 'styled-components';
 import COLORS from '../../constants/COLORS';
-import useSelect from '../../hooks/useSelect';
+
+import { useContext } from 'react';
+import { ContentContext } from '../../contexts/ContentContext';
+import { SelectionContext } from '../../contexts/SelectionContext';
 
 const Buttons = () => {
-  // const HandleClickBoldBtn = (e) =>
-  //   useSelect(e, content, setContent, '**', '**');
+  const { content, setContentHandler } = useContext(ContentContext);
+  const { selectionStart, selectionEnd } = useContext(SelectionContext);
+
+  const handleClickBoldBtn = () => {
+    if (selectionEnd - selectionStart !== 0) {
+      setContentHandler(
+        content.slice(0, selectionStart) +
+          '**' +
+          content.slice(selectionStart, selectionEnd) +
+          '**' +
+          content.slice(selectionEnd, content.length)
+      );
+    }
+  };
 
   return (
     <Wrapper>
-      <Btn>B</Btn>
+      <Btn onClick={handleClickBoldBtn}>B</Btn>
     </Wrapper>
   );
 };

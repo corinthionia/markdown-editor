@@ -3,16 +3,19 @@ import Editor from './components/editor/Editor';
 import Viewer from './components/viewer/Viewer';
 import COLORS from './constants/COLORS';
 import ContentProvider from './contexts/ContentContext';
+import SelectionContextProvider from './contexts/SelectionContext';
 
 function App() {
   return (
     <Wrapper>
       <Header>📝 corinthionia / markdown-editor</Header>
       <ContentProvider>
-        <Content>
-          <Editor />
-          <Viewer />
-        </Content>
+        <SelectionContextProvider>
+          <Content>
+            <Editor />
+            <Viewer />
+          </Content>
+        </SelectionContextProvider>
       </ContentProvider>
     </Wrapper>
   );
