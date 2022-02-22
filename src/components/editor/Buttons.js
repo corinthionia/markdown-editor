@@ -8,6 +8,12 @@ const Buttons = () => {
     <Wrapper>
       <Btn onClick={useButtonClick('**', '**')}>B</Btn>
       <Btn onClick={useButtonClick('_', '_')}>I</Btn>
+      <Btn onClick={useButtonClick('\n>', '')}>"</Btn>
+      <Btn onClick={useButtonClick('~~', '~~')}>_</Btn>
+      <Btn onClick={useButtonClick('\n# ', '')}>h1</Btn>
+      <Btn onClick={useButtonClick('\n## ', '')}>h2</Btn>
+      <Btn onClick={useButtonClick('\n### ', '')}>h3</Btn>
+      <Btn onClick={useButtonClick('![', ']()')}>img</Btn>
     </Wrapper>
   );
 };

@@ -9,7 +9,7 @@ import SelectionContextProvider from './contexts/SelectionContext';
 function App() {
   return (
     <Wrapper>
-      <Header>🧞‍♂️ corinthionia / markdown-editor</Header>
+      <Header>❤️‍🔥 corinthionia / markdown-editor</Header>
       <InputProvider>
         <SelectionContextProvider>
           <Content>
