@@ -1,20 +1,25 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
-import useInput from '../../hooks/useInput';
-import useSelect from '../../hooks/useSelect';
+
+import { InputContext } from '../../contexts/InputContext';
+import { SelectionContext } from '../../contexts/SelectionContext';
 
 const TextArea = () => {
-  const [inputText, setInputText, handleInputChange] = useInput('');
+  const { inputText, handleInputChange } = useContext(InputContext);
+  const { setSelectionStartHandler, setSelectionEndHandler } =
+    useContext(SelectionContext);
 
-  const HandleClickBoldBtn = (e) =>
-    useSelect(e, inputText, setInputText, '**', '**');
+  const handleDragText = (e) => {
+    setSelectionStartHandler(e.target.selectionStart);
+    setSelectionEndHandler(e.target.selectionEnd);
+  };
 
   return (
     <Wrapper
-      spellCheck="false"
-      onClick={HandleClickBoldBtn}
-      onChange={handleInputChange}
       value={inputText}
+      spellCheck="false"
+      onClick={handleDragText}
+      onChange={handleInputChange}
     ></Wrapper>
   );
 };

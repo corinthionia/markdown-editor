@@ -2,18 +2,22 @@ import styled from 'styled-components';
 import Editor from './components/editor/Editor';
 import Viewer from './components/viewer/Viewer';
 import COLORS from './constants/COLORS';
-import ContentProvider from './contexts/ContentContext';
+import InputProvider from './contexts/InputContext';
+
+import SelectionContextProvider from './contexts/SelectionContext';
 
 function App() {
   return (
     <Wrapper>
-      <Header>📝 corinthionia / markdown-editor</Header>
-      <ContentProvider>
-        <Content>
-          <Editor />
-          <Viewer />
-        </Content>
-      </ContentProvider>
+      <Header>❤️‍🔥 corinthionia / markdown-editor</Header>
+      <InputProvider>
+        <SelectionContextProvider>
+          <Content>
+            <Editor />
+            <Viewer />
+          </Content>
+        </SelectionContextProvider>
+      </InputProvider>
     </Wrapper>
   );
 }
