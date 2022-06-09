@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 
 export const InputContext = createContext({
   state: { inputText: '' },
@@ -8,17 +8,11 @@ export const InputContext = createContext({
 });
 
 const InputProvider = ({ children }) => {
-  const [inputText, setInputText] = useState(
-    localStorage.getItem('content') || ''
-  );
+  const [inputText, setInputText] = useState('');
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
   };
-
-  useEffect(() => {
-    localStorage.setItem('content', inputText);
-  }, [inputText]);
 
   const setInputTextHandler = (inputText) => setInputText(inputText);
 
